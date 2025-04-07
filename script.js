@@ -54,3 +54,28 @@ const isSignedIn = false; // Replace with actual logic to check user authenticat
       }
     });
   });
+  const reports = [
+    { id: 1, title: "Pothole on Main Street", description: "Large pothole causing traffic issues.", location: "43.65107, -79.347015", status: "Pending" },
+    { id: 2, title: "Broken Streetlight", description: "Streetlight not working near the park.", location: "43.6532, -79.3832", status: "In Progress" },
+  ];
+
+  // Function to render reports in the table
+  function renderReports() {
+    const reportsTableBody = document.querySelector("#reportsTable tbody");
+    reportsTableBody.innerHTML = ""; // Clear existing rows
+
+    reports.forEach(report => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${report.id}</td>
+        <td>${report.title}</td>
+        <td>${report.description}</td>
+        <td>${report.location}</td>
+        <td>${report.status}</td>
+      `;
+      reportsTableBody.appendChild(row);
+    });
+  }
+
+  // Call renderReports on page load
+  document.addEventListener("DOMContentLoaded", renderReports);
