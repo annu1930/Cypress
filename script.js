@@ -5,9 +5,52 @@ const isSignedIn = false; // Replace with actual logic to check user authenticat
     if (!isSignedIn) {
       // Redirect to sign-in page if not signed in
       event.preventDefault();
-      window.location.href = 'login.html';
+      window.location.href = 'register.html';
     } else {
       // Redirect to report page if signed in
       window.location.href = 'report.html';
     }
+  });
+  function initMap() {
+    const toronto = { lat: 43.65107, lng: -79.347015 }; // Coordinates for Toronto
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: toronto,
+    });
+
+    // Add a draggable marker
+    const marker = new google.maps.Marker({
+      position: toronto,
+      map: map,
+      draggable: true,
+      title: "Drag me to pinpoint the location",
+    });
+
+    // Update the location input field when the marker is dragged
+    google.maps.event.addListener(marker, 'dragend', function () {
+      const position = marker.getPosition();
+      document.getElementById("problemLocation").value = `${position.lat()}, ${position.lng()}`;
+    });
+  }
+
+  // Initialize the map
+  window.onload = initMap;
+  document.querySelectorAll('.btn-success').forEach(button => {
+    button.addEventListener('click', () => {
+      alert('Status updated to "In Progress"');
+    });
+  });
+
+  document.querySelectorAll('.btn-secondary').forEach(button => {
+    button.addEventListener('click', () => {
+      alert('Status updated to "Resolved"');
+    });
+  });
+
+  document.querySelectorAll('.btn-danger').forEach(button => {
+    button.addEventListener('click', () => {
+      if (confirm('Are you sure you want to delete this report?')) {
+        alert('Report deleted');
+      }
+    });
   });
