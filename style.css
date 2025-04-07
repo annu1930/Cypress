@@ -1,0 +1,29 @@
+body {
+    background-color: white;
+  }
+  .navbar-custom {
+    background-color: rgb(255, 255, 255);
+  }
+  .navbar-custom .nav-link,
+  .navbar-custom .navbar-brand {
+    color: rgb(239, 120, 1);
+  }
+  .navbar-custom .nav-link:hover,
+  .navbar-custom .navbar-brand:hover {
+    color: #f0f0f0;
+  }
+  .brand-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200rem; /* Extra bold */
+    font-size: 4 rem; /* Large and clean */
+    color: #121213; /* Optional: a classy dark blue-gray */
+    letter-spacing: 1px; /* Optional: spacing for elegance */
+    text-transform: uppercase; /* Optional: All caps */
+  }
+  
+  
+  .text-orange {
+    color: rgb(239, 120, 1);
+  }
+
+ 
