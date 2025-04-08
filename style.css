@@ -3,6 +3,7 @@ body {
   }
   .navbar-custom {
     background-color: rgb(255, 255, 255);
+    text-align: center;
   }
   .navbar-custom .nav-link,
   .navbar-custom .navbar-brand {
