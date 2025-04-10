@@ -49,7 +49,7 @@
           <!-- Sign In Tab -->
           <div class="tab-pane fade show active" id="sign-in" role="tabpanel" aria-labelledby="sign-in-tab">
             <h2 class="text-center text-orange mb-4">Sign In</h2>
-            <form action="login-handler.html" method="POST">
+            <form action="login-handler.html" method="POST" onsubmit="return validateSignInForm()">
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
@@ -60,6 +60,10 @@
               </div>
               <button type="submit" class="btn btn-warning text-white w-100">Sign In</button>
             </form>
+            <div class="text-center mt-3">
+              <a href="reset.html" class="text-decoration-none">Forgot Username or Password?</a>
+            </div>
+          </div>
           </div>
           <!-- Register Tab -->
           <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">

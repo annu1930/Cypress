@@ -79,3 +79,84 @@ const isSignedIn = false; // Replace with actual logic to check user authenticat
 
   // Call renderReports on page load
   document.addEventListener("DOMContentLoaded", renderReports);
+
+    // Validation for Sign In Form
+
+  function validateSignInForm() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
+      return false;
+    }
+
+    // Password validation
+    if (password.length < 6) {
+      alert('Password must be at least 6 characters long.');
+      return false;
+    }
+
+    return true; // Allow form submission
+  }
+  // Handle Reset Form Submission
+  function handleReset() {
+    const email = document.getElementById('reset-email').value;
+
+    if (!email) {
+      alert('Please enter your registered email address.');
+      return false;
+    }
+
+    alert('If the email is registered, a reset link will be sent to your email.');
+    return true; // Allow form submission
+  }
+
+   // Handle Sign In
+   async function handleSignIn(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Simulate backend authentication
+    const response = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      const user = await response.json();
+      localStorage.setItem("userId", user.id); // Store user ID in localStorage
+      window.location.href = "index.html"; // Redirect to index page
+    } else {
+      alert("Invalid credentials. Please try again.");
+    }
+  }
+
+  // Handle Register
+  async function handleRegister(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("register-name").value;
+    const email = document.getElementById("register-email").value;
+    const password = document.getElementById("register-password").value;
+
+    // Simulate backend registration
+    const response = await fetch("http://localhost:3000/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
+    });
+
+    if (response.ok) {
+      const user = await response.json();
+      localStorage.setItem("userId", user.id); // Store user ID in localStorage
+      window.location.href = "index.html"; // Redirect to index page
+    } else {
+      alert("Registration failed. Please try again.");
+    }
+  }
