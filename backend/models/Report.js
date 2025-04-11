@@ -1,3 +1,4 @@
+// models/Report.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
 const User = require('./User'); // Import the User model
@@ -41,33 +42,3 @@ const Report = sequelize.define('Report', {
 });
 
 module.exports = Report;
-
-async function fetchReports() {
-  try {
-    const response = await fetch("http://localhost:3000/reports");
-    if (response.ok) {
-      const reports = await response.json();
-      const reportsTableBody = document.querySelector("#reportsTable tbody");
-      reportsTableBody.innerHTML = ""; // Clear existing rows
-
-      reports.forEach((report) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${report.id}</td>
-          <td>${report.title}</td>
-          <td>${report.description}</td>
-          <td>${report.location}</td>
-          <td>${report.status}</td>
-        `;
-        reportsTableBody.appendChild(row);
-      });
-    } else {
-      alert("Failed to fetch reports.");
-    }
-  } catch (error) {
-    console.error("Error fetching reports:", error);
-  }
-}
-
-// Call fetchReports on page load
-document.addEventListener("DOMContentLoaded", fetchReports);
