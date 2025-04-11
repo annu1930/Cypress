@@ -123,7 +123,9 @@ async function handleSignIn(event) {
       const data = await response.json();
       alert("Login successful!");
       localStorage.setItem("userId", data.token); // Store token
-      window.location.href = "index.html"; // Redirect to main page
+      
+      // Redirect directly to report.html instead of index.html
+      window.location.href = "report.html";
     } else {
       alert("Invalid credentials. Please try again.");
     }
@@ -160,5 +162,60 @@ async function handleRegister(event) {
   } catch (error) {
     console.error("Error during registration:", error);
     alert("An error occurred. Please try again.");
+  }
+}
+
+async function handleReportSubmission(event) {
+  event.preventDefault();
+  
+  const title = document.getElementById("report-title").value;
+  const description = document.getElementById("report-description").value;
+  const location = document.getElementById("problemLocation").value;
+  const type = document.getElementById("problemType").value;
+  const userId = localStorage.getItem("userId");
+  
+  // Simple validation
+  if (!title || !description || !location || !type) {
+    alert("Please fill out all required fields");
+    return false;
+  }
+  
+  // Check if user is authenticated
+  if (!userId) {
+    alert("Please login to submit a report");
+    window.location.href = "register.html";
+    return false;
+  }
+  
+  try {
+    const response = await fetch("http://localhost:3000/report", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${userId}`
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        location,
+        type,
+        user_id: parseInt(userId)
+      })
+    });
+    
+    if (response.ok) {
+      alert("Report submitted successfully!");
+      document.getElementById("report-form").reset();
+      fetchReports(); // Refresh the reports table
+      return true;
+    } else {
+      const errorData = await response.json();
+      alert(`Submission failed: ${errorData.message}`);
+      return false;
+    }
+  } catch (error) {
+    console.error("Error submitting report:", error);
+    alert("An error occurred while submitting your report. Please try again.");
+    return false;
   }
 }
