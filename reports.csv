@@ -1,0 +1,4 @@
+report_id,title,description,location,status,problem_type,user_id
+1,Fire,Squirrel on fire,"Lat: 43.65891, Lng: -79.38217",In progress,other,2
+2,Homeless on homeless crime,A homeless man was robbing another homeless man,"Lat: 43.64798, Lng: -79.38835",Resolved,other,2
+3,Really big pothole,"There is a really pothole that is big enough to swallow a person whole. Luckily, I saw your mother walk over it but she was big enough not get swallowed whole.","Lat: 43.67456, Lng: -79.34921",In progress,pothole,2

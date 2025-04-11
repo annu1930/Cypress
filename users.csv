@@ -1,0 +1,4 @@
+id,name,email,password,role
+1,user1,user1@user,user1,user
+2,admin1,admin1@admin,admin1,admin
+3,user2,user2@user,user2,user
