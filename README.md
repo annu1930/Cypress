@@ -23,7 +23,7 @@ pip install flask pandas
 
 After installing the dependencies, you can run the program using the following command:
 
-- On Linux/macOS:
+- On Windows:
   ```bash
   python app.py
 
