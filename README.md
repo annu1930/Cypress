@@ -5,13 +5,13 @@ A website to allow users to report problems they notice on the streets to the Ci
 # Installation
 
 ## Clone the repo
-```git clone https://github.com/annu1930/Cypress/```
+```git clone https://github.com/annu1930/Cypress/
 
 ## Go into the directory
-```cd Cypress```
+```cd Cypress
 
 ## Install dependencies
-```pip install flask pandas```
+```pip install flask pandas
 
 # Running the Program
 
