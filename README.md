@@ -21,7 +21,7 @@ pip install flask pandas
 
 # Running the Program
 
-After installing the dependencies, you can run the program by using the following command and pasting the localhost URL into web browser:
+After installing the dependencies, you can run the program by using the following command and by pasting the localhost URL into a web browser:
 
 - On Windows:
   ```bash
